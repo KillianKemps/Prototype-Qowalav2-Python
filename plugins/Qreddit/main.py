@@ -3,6 +3,8 @@ from threading import Thread
 
 import praw
 
+qAPI = {}
+
 def test():
     print('QReddit ok!')
 
@@ -14,10 +16,12 @@ def get_subreddit():
         submissions = r.get_subreddit('opensource').get_hot(limit=5)
 
         # Display result and sleep in between
-        print([str(x) for x in submissions])
+        qAPI.qprint([str(x) for x in submissions])
         time.sleep(1)
 
 def initialize(QowalaAPI):
+    global qAPI
+    qAPI = QowalaAPI
     # Start the subreddit getter function in another thread
     _thread = Thread(target=get_subreddit)
     _thread.start()
