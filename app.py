@@ -9,3 +9,4 @@ for path in glob.glob('plugins/[!_]*/[!_]*.py'):
 
 for module in modules:
     module.test()
+    module.initialize()
