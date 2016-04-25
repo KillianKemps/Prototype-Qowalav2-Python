@@ -19,10 +19,6 @@ auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
 api = tweepy.API(auth)
 print('Api ok!')
 
-# public_tweets = api.home_timeline()
-# for tweet in public_tweets:
-    # print(tweet.text)
-
 def test():
     print('test!!')
 
@@ -36,10 +32,8 @@ class MyOtherStreamListener(tweepy.StreamListener):
     def on_status(self, status):
         print('$'*80)
 
-myStreamListener = MyStreamListener
-myOtherStreamListener = MyOtherStreamListener
-myStream = tweepy.Stream(auth = api.auth, listener=myStreamListener())
-myOtherStream = tweepy.Stream(auth = api.auth, listener=myOtherStreamListener())
+myStream = tweepy.Stream(auth = api.auth, listener=MyStreamListener())
+myOtherStream = tweepy.Stream(auth = api.auth, listener=MyOtherStreamListener())
 
 myStream.filter(track=['opensource'], async=True)
 myOtherStream.filter(track=['gif'], async=True)
