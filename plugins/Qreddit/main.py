@@ -17,7 +17,7 @@ def get_subreddit():
         print([str(x) for x in submissions])
         time.sleep(1)
 
-def initialize():
+def initialize(QowalaAPI):
     # Start the subreddit getter function in another thread
     _thread = Thread(target=get_subreddit)
     _thread.start()

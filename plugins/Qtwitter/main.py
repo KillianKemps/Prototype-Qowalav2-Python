@@ -14,7 +14,7 @@ ACCESS_SECRET = tokens['ACCESS_SECRET']
 def test():
     print('QTwitter ok!')
 
-def initialize():
+def initialize(QowalaAPI):
     # Set Twitter credentials
     auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
     auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
@@ -27,12 +27,12 @@ def initialize():
     class MyStreamListener(tweepy.StreamListener):
 
         def on_status(self, status):
-            print('*'*80)
+            QowalaAPI.qprint('*'*80)
 
     class MyOtherStreamListener(tweepy.StreamListener):
 
         def on_status(self, status):
-            print('$'*80)
+            QowalaAPI.qprint('$'*80)
 
     # Instantiate two streams
     myStream = tweepy.Stream(auth = api.auth, listener=MyStreamListener())

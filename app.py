@@ -1,5 +1,7 @@
 import os, glob, imp
 
+import core_api
+
 modules = []
 
 # Search all modules in plugins/
@@ -11,4 +13,4 @@ for path in glob.glob('plugins/[!_]*/main.py'):
 # Start all plugins found
 for module in modules:
     module.test()
-    module.initialize()
+    module.initialize(core_api.QowalaAPI)
