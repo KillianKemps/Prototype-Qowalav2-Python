@@ -21,9 +21,9 @@ def initialize():
 
     # Start Twitter API
     api = tweepy.API(auth)
-    print('Api ok!')
+    print('Twitter api initialized!')
 
-    # Launch streaming tests
+    # Create two stream listeners to customize output
     class MyStreamListener(tweepy.StreamListener):
 
         def on_status(self, status):
@@ -34,8 +34,10 @@ def initialize():
         def on_status(self, status):
             print('$'*80)
 
+    # Instantiate two streams
     myStream = tweepy.Stream(auth = api.auth, listener=MyStreamListener())
     myOtherStream = tweepy.Stream(auth = api.auth, listener=MyOtherStreamListener())
 
+    # Start two streams with different hashtags
     myStream.filter(track=['apple'], async=True)
     myOtherStream.filter(track=['gif'], async=True)
