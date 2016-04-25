@@ -37,5 +37,5 @@ def initialize():
     myStream = tweepy.Stream(auth = api.auth, listener=MyStreamListener())
     myOtherStream = tweepy.Stream(auth = api.auth, listener=MyOtherStreamListener())
 
-    myStream.filter(track=['opensource'], async=True)
+    myStream.filter(track=['apple'], async=True)
     myOtherStream.filter(track=['gif'], async=True)
